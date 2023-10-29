@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>Keyboard - Express Page</title>
+
+		<!-- Bootstrap -->
+		<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link href="https://www.bootcss.com/p/layoutit/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link href="https://www.bootcss.com/p/layoutit/css/layoutit.css" rel="stylesheet">
+		<script type="text/javascript" src="https://www.bootcss.com/p/layoutit/js/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="https://www.bootcss.com/p/layoutit/js/bootstrap.min.js"></script>
+
+	</head>
+	<body>
+	<!--	navbar-->
+	<div th:replace="~{commons/commons::navbar}"></div>
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+
+			<div class="span9" >
+
+						<legend>Order Item</legend>
+					<table class="table table-hover">
+						<thead>
+						<tr>
+
+							<th>
+								iname
+							</th>
+							<th>
+								price
+							</th>
+							<th>
+								num
+							</th>
+							<th>
+								total
+							</th>
+
+
+						</tr>
+						</thead>
+						<tbody>
+						<tr th:each="bag:${orderBagList}">
+
+							<td><a th:text="${bag.getIname()}" th:href="@{/itemDetail(iname=${bag.iname})}"></a></td>
+							<td><a th:text="${bag.getPrice()}"></a></td>
+							<td><a th:text="${bag.getNum()}"></a></td>
+							<td><a th:text="${bag.getNum() * bag.getPrice()}"></a></td>
+
+						</tr>
+						</tbody>
+					</table>
+
+					<div>
+					<fieldset>
+						<legend>Express</legend>
+
+
+						<div class="btn-group">
+							<button data-toggle="dropdown" class="btn dropdown-toggle">Select Express <span class="caret"></span></button>
+							<ul class="dropdown-menu" contenteditable="true">
+								<li th:each="express:${expressList}">
+									<a th:text="'Express No.' + ${express.getIdExpress()}" th:onclick="showExpress(	[[${express.getIdExpress()}]],
+																													[[${express.getCountry()}]],
+																													[[${express.getCity()}]],
+																													[[${express.getAddress()}]],
+																													[[${express.getFirstname()}]],
+																													[[${express.getLastname()}]],
+																													[[${express.getPhone()}]])"></a>
+								</li>
+							</ul>
+						</div>
+						<br/>
+						<div>
+						<span class="span4">
+							<label>Country</label><input type="text" readonly="readonly" th:id="country"/>
+							<label>First Name</label><input type="text" readonly="readonly" th:id="firstname"/>
+						</span>
+						<span class="span4">
+							<label>City</label><input type="text" readonly="readonly" th:id="city"/>
+							<label>Last Name</label><input type="text" readonly="readonly" th:id="lastname"/>
+						</span>
+						<span class="span4">
+							<label>Address</label><input type="text" readonly="readonly" th:id="address"/>
+							<label>Phone</label><input type="text" readonly="readonly" th:id="phone"/>
+						</span>
+						</div>
+
+					</fieldset>
+					</div>
+
+				<div>
+					<a class="btn btn-danger" href="/bag/show">Back</a>
+					<a class="btn btn-primary" th:onclick="confirmOrder([[${sendList}]])">Confirm</a>
+				</div>
+
+			</div>
+			<div class="span3">
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" th:inline="javascript">
+
+		var currentExpress = 0;
+		function showExpress(idExpress,country,city,address,firstname,lastname,phone) {
+			currentExpress = idExpress;
+			$(document.getElementById("country")).attr("placeholder",country);
+			$(document.getElementById("city")).attr("placeholder",city);
+			$(document.getElementById("address")).attr("placeholder",address);
+			$(document.getElementById("firstname")).attr("placeholder",firstname);
+			$(document.getElementById("lastname")).attr("placeholder",lastname);
+			$(document.getElementById("phone")).attr("placeholder",phone);
+		}
+
+		function confirmOrder(sendList) {
+			if(currentExpress === 0){
+				alert("Please select one express address first.");
+				return;
+			}else {
+				window.location.href="/order/confirm?sendList=" + sendList + "&idExpress=" + currentExpress;
+			}
+		}
+	</script>
+
+
+	</body>
+
+</html>

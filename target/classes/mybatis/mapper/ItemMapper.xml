@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msr.keys.mapper.ItemMapper">
+
+    <select id="queryItemList" resultType="com.msr.keys.pojo.Item">
+        select * from item
+    </select>
+
+    <select id="queryItemType" resultType="com.msr.keys.pojo.Item">
+        select * from item where type=#{type}
+    </select>
+
+    <select id="queryItemSearch" resultType="com.msr.keys.pojo.Item">
+        select * from item where iname like #{search}
+    </select>
+
+    <select id="queryItemByIname" resultType="com.msr.keys.pojo.Item">
+        select * from item where iname=#{iname}
+    </select>
+
+</mapper>

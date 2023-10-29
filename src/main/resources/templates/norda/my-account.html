@@ -1,0 +1,337 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Keyboard - Center Page</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/KEYBOARD3.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <div th:replace="~{commons/commons::navbar2}"></div>
+
+
+        <!-- my account wrapper start -->
+        <div class="my-account-wrapper pt-120 pb-120">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- My Account Page Start -->
+                        <div class="myaccount-page-wrapper pt-75">
+                            <!-- My Account Tab Menu Start -->
+                            <div class="row">
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="myaccount-tab-menu nav" role="tablist">
+                                        <a href="#orders" class="active" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
+                                        <a href="#address-edit" data-toggle="tab"><i class="fa fa-map-marker"></i> Addresses</a>
+                                        <a href="#dashboad" data-toggle="tab"><i class="fa fa-dashboard"></i> Account</a>
+                                    </div>
+                                </div>
+                                <!-- My Account Tab Menu End -->
+                                <!-- My Account Tab Content Start -->
+                                <div class="col-lg-9 col-md-8">
+                                    <div class="tab-content" id="myaccountContent">
+
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade show active" id="orders" role="tabpanel">
+                                            <div class="myaccount-content">
+                                                <h3>Orders</h3>
+                                                <div class="myaccount-table table-responsive text-center">
+                                                    <table class="table table-bordered">
+                                                        <thead class="thead-light">
+                                                            <tr>
+                                                                <th>Order</th>
+                                                                <th>Product</th>
+                                                                <th>Price</th>
+                                                                <th>Num</th>
+                                                                <th>Total</th>
+                                                                <th>Express</th>
+                                                                <th>Status</th>
+                                                                <th>Forward</th>
+                                                                <th>Cancel</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr th:each="order:${orderList}">
+                                                                <td th:id="'idOrder' + ${order.getIdOrder()}" 	th:text="${order.getIdOrder()}"></td>
+                                                                <td>
+                                                                    <a th:text="${order.getIname()}" th:href="@{/itemDetail(iname=${order.getIname()})}"></a>
+                                                                </td>
+                                                                <td 											th:text="${order.getPrice()}"></td>
+                                                                <td 											th:text="${order.getNum()}"></td>
+                                                                <td 											th:text="${order.getPrice() * order.getNum()}"></td>
+                                                                <td th:id="'express' + ${order.getIdOrder()}" 	th:text="'Express No.' + ${order.getIdExpress()}"></td>
+                                                                <td th:id="'state' + ${order.getIdOrder()}" 	th:text="${order.getState()}"></td>
+                                                                <td>
+                                                                    <a class="btn btn-outline-dark" th:id="'forward' + ${order.getIdOrder()}" th:onclick="forwardOrder([[${order.getIdOrder()}]],'forward')">forward</a>
+                                                                </td>
+                                                                <td>
+                                                                    <a class="btn btn-outline-dark" th:id="'cancel' + ${order.getIdOrder()}" th:onclick="forwardOrder([[${order.getIdOrder()}]],'canceled')">cancel</a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
+
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade" id="address-edit" role="tabpanel">
+                                            <form class="form-horizontal" th:action="@{/expressedit}" method="post"></form>
+                                            <div class="myaccount-content row">
+                                                <div class="col-lg-12">
+                                                    <h3>Addresses</h3>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="btn-group">
+                                                        <button data-toggle="dropdown" class="btn btn-outline-dark dropdown-toggle">Select Express</button>
+                                                        <ul class="dropdown-menu" contenteditable="true">
+                                                            <li class="btn-outline-dark" th:each="express:${expressList}" th:id="'Express No.' + ${express.getIdExpress()}" th:text="'Express No.' + ${express.getIdExpress()}" th:onclick="showExpress(	[[${express.getIdExpress()}]],
+                                                                                                                        [[${express.getCountry()}]],
+                                                                                                                        [[${express.getCity()}]],
+                                                                                                                        [[${express.getAddress()}]],
+                                                                                                                        [[${express.getFirstname()}]],
+                                                                                                                        [[${express.getLastname()}]],
+                                                                                                                        [[${express.getPhone()}]])">
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 pt-25">
+                                                    <div class="billing-info mb-20">
+                                                        <label>Country</label><input type="text" readonly="readonly" th:id="country" onclick="changeEdit('country')"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 pt-25">
+                                                    <div class="billing-info mb-20">
+                                                        <label>City</label><input type="text" readonly="readonly" th:id="city" onclick="changeEdit('city')"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info mb-20">
+                                                        <label>First Name</label><input type="text" readonly="readonly" th:id="firstname" onclick="changeEdit('firstname')"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info mb-20">
+                                                        <label>Last Name</label><input type="text" readonly="readonly" th:id="lastname" onclick="changeEdit('lastname')"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info mb-20">
+                                                        <label>Address</label><input type="text" readonly="readonly" th:id="address" onclick="changeEdit('address')"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-md-6">
+                                                    <div class="billing-info mb-20">
+                                                        <label>Phone</label><input type="text" readonly="readonly" th:id="phone" onclick="changeEdit('phone')"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <a class="btn btn-outline-dark" onclick="editExpress()">Submit</a>
+                                                    <a class="btn btn-outline-danger" onclick="deleteExpress()">Delete</a>
+                                                    <a style="color: red" th:text="${msg3}" th:if="${!#strings.isEmpty(msg3)}"> </a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <!-- Single Tab Content End -->
+
+                                        <!-- Single Tab Content Start -->
+                                        <div class="tab-pane fade " id="dashboad" role="tabpanel">
+                                            <form class="form-horizontal" th:action="@{/userpersonal}" method="post">
+                                            <div class="myaccount-content row">
+
+                                                <div class="col-lg-12">
+                                                    <h3>Account</h3>
+                                                </div>
+
+                                                <div class="col-lg-2">
+                                                    <label for="currentUsername">Username</label>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <input type="text" name="username" readonly="readonly" id="currentUsername" th:placeholder="${currentUsername}"/>
+                                                </div>
+                                                <div class="col-lg-4"></div>
+                                                <div class="col-lg-12"><br/></div>
+
+                                                <div class="col-lg-2">
+                                                    <label for="currentEmail">Email</label>
+                                                </div>
+
+                                                <div class="col-lg-6">
+                                                    <input type="text" name="email" readonly="readonly" id="currentEmail" th:placeholder="${currentEmail}" onclick="changeEdit('currentEmail')"/>
+                                                </div>
+
+                                                <div class="col-lg-1"></div>
+
+                                                <div class="col-lg-2">
+                                                    <button type="submit" class="btn btn-outline-dark">Submit</button>
+                                                    <a style="color: red" th:text="${msg3}" th:if="${!#strings.isEmpty(msg3)}"> </a>
+                                                </div>
+
+                                                <div class="col-lg-12"><br/></div>
+
+                                                <div class="col-lg-2">
+                                                    <label for="currentPassword">Password</label>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <input type="password" name="password" readonly="readonly" id="currentPassword" th:placeholder="${currentPassword}" onclick="changeEdit('currentPassword')"/>
+                                                </div>
+
+                                            </div>
+                                            </form>
+                                        </div>
+                                        <!-- Single Tab Content End -->
+
+                                        </div>
+                                </div> <!-- My Account Tab Content End -->
+                            </div>
+                        </div> <!-- My Account Page End -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- my account wrapper end -->
+
+
+        <div th:replace="~{commons/commons::footer}"></div>
+    </div>
+
+    <!-- All JS is here
+============================================ -->
+
+    <script type="text/javascript" th:inline="javascript">
+
+        var expressList = eval([[${JSONexpressList}]]);
+        var express;
+        var orderList = eval([[${JSONorderList}]]);
+        var order;
+        var currentExpress = 0;
+
+        $(function () {
+
+            for(express in expressList){
+                if(express==null) break;
+                currentExpress = expressList[express]['idExpress'];
+                showExpress(expressList[express]['idExpress'],
+                    expressList[express]['country'],
+                    expressList[express]['city'],
+                    expressList[express]['address'],
+                    expressList[express]['firstname'],
+                    expressList[express]['lastname'],
+                    expressList[express]['phone']);
+                break;
+            };
+
+            $(document.getElementById("Express No.0")).text("New Express");
+
+            for(order in orderList){
+                var tagId2 = 'forward' + orderList[order]['idOrder'];
+
+                if(orderList[order]['state'] === "notPaid") {
+                    $(document.getElementById(tagId2)).text('pay');
+                }
+                if(orderList[order]['state'] === "sending") {
+                    $(document.getElementById(tagId2)).text('reminder');
+                }
+                if(orderList[order]['state'] === "delivered") {
+                    $(document.getElementById(tagId2)).text("receive");
+                }
+                if( orderList[order]['state'] === "received") {
+                    $(document.getElementById(tagId2)).hide();
+                }
+                if(orderList[order]['state'] === "canceled") {
+                    $(document.getElementById(tagId2)).hide();
+                    $(document.getElementById('cancel' + orderList[order]['idOrder'])).hide();
+                }
+            }
+
+        });
+
+        function changeEdit(tagid) {
+            $(document.getElementById(tagid)).prop("readonly",false);
+        }
+
+        function forwardOrder(idOrder,forwardType) {
+            window.location.href="/orderforward?idOrder=" + idOrder + "&forward=" + forwardType;
+        }
+
+        function editExpress() {
+            var country = $(document.getElementById("country")).val();
+            var city = $(document.getElementById("city")).val();
+            var lastname = $(document.getElementById("lastname")).val();
+            var firstname = $(document.getElementById("firstname")).val();
+            var address = $(document.getElementById("address")).val();
+            var phone = $(document.getElementById("phone")).val();
+
+            window.location.href="/expressedit?idExpress=" + currentExpress + "&country=" + country + "&city=" + city + "&firstname=" + firstname + "&lastname=" + lastname + "&address=" + address + "&phone=" + phone;
+        }
+
+        function deleteExpress() {
+            if(currentExpress==0) return;
+            window.location.href="/expressdelete?idExpress=" + currentExpress;
+        }
+
+
+        function showExpress(idExpress,country,city,address,firstname,lastname,phone) {
+            currentExpress = idExpress;
+            $(document.getElementById("country")).attr("placeholder",country);
+            $(document.getElementById("city")).attr("placeholder",city);
+            $(document.getElementById("address")).attr("placeholder",address);
+            $(document.getElementById("firstname")).attr("placeholder",firstname);
+            $(document.getElementById("lastname")).attr("placeholder",lastname);
+            $(document.getElementById("phone")).attr("placeholder",phone);
+        }
+
+
+
+    </script>
+
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/plugins/slick.js"></script>
+    <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="assets/js/plugins/jquery.instagramfeed.min.js"></script>
+    <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/plugins/jquery-ui-touch-punch.js"></script>
+    <script src="assets/js/plugins/jquery-ui.js"></script>
+    <script src="assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/plugins/sticky-sidebar.js"></script>
+    <script src="assets/js/plugins/easyzoom.js"></script>
+    <script src="assets/js/plugins/scrollup.js"></script>
+    <script src="assets/js/plugins/ajax-mail.js"></script>
+
+    <!-- Use the minified version files listed below for better performance and remove the files listed above  
+<script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script>  -->
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

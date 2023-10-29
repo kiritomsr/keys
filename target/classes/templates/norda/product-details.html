@@ -1,0 +1,550 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Keyboard - Product Page</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/KEYBOARD3.png">
+
+
+    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+
+        <div th:replace="~{commons/commons::navbar2}"></div>
+        <div class="product-details-area pt-120 pb-115">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product-details-tab">
+                            <div class="pro-dec-big-img-slider">
+                                <div class="easyzoom-style">
+                                    <div class="easyzoom easyzoom--overlay">
+                                        <a th:href="${thisItem.getIpic()}">
+                                            <img th:src="@{${thisItem.getIpic()}}" width="650" height="403" alt="">
+                                        </a>
+                                    </div>
+                                    <a class="easyzoom-pop-up img-popup" th:href="${thisItem.getIpic()}" th:width="1200" th:height="1125"><i class="icon-size-fullscreen"></i></a>
+                                </div>
+                                <div class="easyzoom-style">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a>
+                                        <img th:src="@{${thisItem.getIpic()}}" width="650" height="403" alt="">
+                                    </a>
+                                </div>
+                                <a class="easyzoom-pop-up img-popup" th:href="${thisItem.getIpic()}" th:width="1200" th:height="1125"><i class="icon-size-fullscreen"></i></a>
+                            </div><div class="easyzoom-style">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a>
+                                        <img th:src="@{${thisItem.getIpic()}}" width="650" height="403" alt="">
+                                    </a>
+                                </div>
+                                <a class="easyzoom-pop-up img-popup" th:href="${thisItem.getIpic()}" th:width="1200" th:height="1125"><i class="icon-size-fullscreen"></i></a>
+                            </div><div class="easyzoom-style">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a>
+                                        <img th:src="@{${thisItem.getIpic()}}" width="650" height="403" alt="">
+                                    </a>
+                                </div>
+                                <a class="easyzoom-pop-up img-popup" th:href="${thisItem.getIpic()}" th:width="1200" th:height="1125"><i class="icon-size-fullscreen"></i></a>
+                            </div><div class="easyzoom-style">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a>
+                                        <img th:src="@{${thisItem.getIpic()}}" width="650" height="403" alt="">
+                                    </a>
+                                </div>
+                                <a class="easyzoom-pop-up img-popup" th:href="${thisItem.getIpic()}" th:width="1200" th:height="1125"><i class="icon-size-fullscreen"></i></a>
+                            </div>
+                            </div>
+                            <div class="product-dec-slider-small product-dec-small-style1">
+                                <div class="product-dec-small active" >
+                                    <img th:src="@{${thisItem.getIpic()}}" width="180" height="125" alt="">
+                                </div>
+                                <div class="product-dec-small active" >
+                                    <img th:src="@{${thisItem.getIpic()}}" width="180" height="125" alt="">
+                                </div>
+                                <div class="product-dec-small active" >
+                                <img th:src="@{${thisItem.getIpic()}}" width="180" height="125" alt="">
+                                </div>
+                                <div class="product-dec-small active" >
+                                <img th:src="@{${thisItem.getIpic()}}" width="180" height="125" alt="">
+                                </div>
+                                <div class="product-dec-small active" >
+                                <img th:src="@{${thisItem.getIpic()}}" width="180" height="125" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="product-details-content pro-details-content-mrg">
+                            <br/>
+                            <h2 th:text="${thisItem.getIname()}"></h2>
+                            <br/>
+                            <div class="product-ratting-review-wrap">
+                                <div class="product-ratting-digit-wrap">
+                                    <div class="product-ratting">
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                    </div>
+                                    <div class="product-digit">
+                                        <span>5.0</span>
+                                    </div>
+                                </div>
+                                <div class="product-review-order">
+                                    <span>62 Reviews</span>
+                                    <span>242 orders</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <p>A graceful electronic organ with good appearance and touch, based on higher cost performance.</p>
+                            <br/>
+                            <div class="pro-details-price">
+                                <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                            </div>
+                            <br/>
+
+                            <div class="product-details-meta">
+                                <ul>
+                                    <li><span>Categories: </span> <a href="/itemLoad">Electronic,</a> <a href="/itemLoad">Organ,</a> <a href="/itemLoad">Keyboard</a></li>
+                                    <li><span>Tag: </span> <a href="/itemLoad">128 Keys,</a> <a href="/itemLoad">Plug-in</a> , <a href="/itemLoad">Stereo</a></li>
+                                </ul>
+                            </div>
+                            <br/>
+                            <div class="pro-details-action-wrap">
+                                <div class="pro-details-add-to-cart">
+                                    <a title="Add to Cart" th:href="@{/bagadd(iname=${thisItem.iname})}">Add To Cart </a>
+                                </div>
+                                <div class="pro-details-action">
+                                    <a title="Add to Wishlist" href="#"><i class="icon-heart"></i></a>
+                                    <a title="Add to Compare" href="#"><i class="icon-refresh"></i></a>
+                                    <a class="social" title="Social" href="#"><i class="icon-share"></i></a>
+                                    <div class="product-dec-social">
+                                        <a class="facebook" title="Facebook" href="#"><i class="icon-social-facebook"></i></a>
+                                        <a class="twitter" title="Twitter" href="#"><i class="icon-social-twitter"></i></a>
+                                        <a class="instagram" title="Instagram" href="#"><i class="icon-social-instagram"></i></a>
+                                        <a class="pinterest" title="Pinterest" href="#"><i class="icon-social-pinterest"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="description-review-wrapper pb-110">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="dec-review-topbar nav mb-45">
+                            <a class="active" data-toggle="tab" href="#des-details1">Description</a>
+                            <a data-toggle="tab" href="#des-details2">Specification</a>
+                            <a data-toggle="tab" href="#des-details3">Reviews and Ratting</a>
+                        </div>
+                        <div class="tab-content dec-review-bottom">
+                            <div id="des-details1" class="tab-pane active">
+                                <div class="description-wrap">
+                                    <p>This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. </p>
+                                    <p>This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. This is a sample of demostration. </p>
+                                </div>
+                            </div>
+                            <div id="des-details2" class="tab-pane">
+                                <div class="specification-wrap table-responsive">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td class="title width1">Name</td>
+                                                <td th:text="${thisItem.getIname()}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title width1">Material</td>
+                                                <td>Carbon Fiber</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title width1">Models</td>
+                                                <td>E.O.3001</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title width1">Categories</td>
+                                                <td th:text="${thisItem.getType()}"></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title width1">Size</td>
+                                                <td>120'' x 40''</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title width1">Brand </td>
+                                                <td>Keyboards C.O.</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="title width1">Color</td>
+                                                <td>Black, Gray, White</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div id="des-details3" class="tab-pane">
+                                <div class="review-wrapper">
+                                    <h2>1 review for Random Customer XXX</h2>
+                                    <div class="single-review">
+                                        <div class="review-img">
+                                            <img src="assets/images/product-details/client-1.png" alt="">
+                                        </div>
+                                        <div class="review-content">
+                                            <div class="review-top-wrap">
+                                                <div class="review-name">
+                                                    <h5><span>John Snow</span> - March 14, 2019</h5>
+                                                </div>
+                                                <div class="review-rating">
+                                                    <i class="yellow icon_star"></i>
+                                                    <i class="yellow icon_star"></i>
+                                                    <i class="yellow icon_star"></i>
+                                                    <i class="yellow icon_star"></i>
+                                                    <i class="yellow icon_star"></i>
+                                                </div>
+                                            </div>
+                                            <p>Good product. I like it very much! Good product. I like it very much! Good product. I like it very much! Good product. I like it very much! Good product. I like it very much! Good product. I like it very much! Good product. I like it very much! </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ratting-form-wrapper">
+                                    <span>Add a Review</span>
+                                    <div class="ratting-form">
+                                            <div class="row">
+                                                <div class="col-lg-12">
+                                                    <div class="star-box-wrap">
+                                                        <div class="single-ratting-star">
+                                                            <a ><i class="icon_star"></i></a>
+                                                        </div>
+                                                        <div class="single-ratting-star">
+                                                            <a ><i class="icon_star"></i></a>
+                                                            <a ><i class="icon_star"></i></a>
+                                                        </div>
+                                                        <div class="single-ratting-star">
+                                                            <a ><i class="icon_star"></i></a>
+                                                            <a ><i class="icon_star"></i></a>
+                                                            <a ><i class="icon_star"></i></a>
+                                                        </div>
+                                                        <div class="single-ratting-star">
+                                                            <a ><i class="icon_star"></i></a>
+                                                            <a ><i class="icon_star"></i></a>
+                                                            <a ><i class="icon_star"></i></a>
+                                                            <a ><i class="icon_star"></i></a>
+                                                        </div>
+                                                        <div class="single-ratting-star">
+                                                            <a><i class="icon_star"></i></a>
+                                                            <a><i class="icon_star"></i></a>
+                                                            <a><i class="icon_star"></i></a>
+                                                            <a><i class="icon_star"></i></a>
+                                                            <a><i class="icon_star"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="rating-form-style mb-20">
+                                                        <label>Your review <span>*</span></label>
+                                                        <textarea name="Your Review"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <div class="form-submit">
+                                                        <input type="submit" value="Submit">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="related-product pb-115">
+            <div class="container">
+                <div class="section-title mb-45 text-center">
+                    <h2>Related Product</h2>
+                </div>
+                <div class="related-product-active">
+                    <div class="product-plr-1">
+                        <div class="single-product-wrap">
+                            <div class="product-img product-img-zoom mb-15">
+                                <a>
+                                    <img th:src="@{${thisItem.getIpic()}}" width="270" height="324" alt="">
+                                </a>
+                                <span class="pro-badge left bg-red">-$20.0</span>
+                            </div>
+                            <div class="product-content-wrap-2 text-center">
+                                <div class="product-rating-wrap">
+                                    <div class="product-rating">
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                    </div>
+                                    <span>(5)</span>
+                                </div>
+                                <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                                <div class="product-price-2">
+                                    <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                    <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                                </div>
+                            </div>
+                            <div class="product-content-wrap-2 product-content-position text-center">
+                                <div class="product-rating-wrap">
+                                    <div class="product-rating">
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                    </div>
+                                    <span>(5)</span>
+                                </div>
+                                <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                                <div class="product-price-2">
+                                    <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                    <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                                </div>
+                                <div class="pro-add-to-cart">
+                                    <button title="Add to Cart">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-plr-1">
+                        <div class="single-product-wrap">
+                            <div class="product-img product-img-zoom mb-15">
+                                <a>
+                                    <img th:src="@{${thisItem.getIpic()}}" width="270" height="324" alt="">
+                                </a>
+                                <span class="pro-badge left bg-red">-$20.0</span>
+                            </div>
+                            <div class="product-content-wrap-2 text-center">
+                                <div class="product-rating-wrap">
+                                    <div class="product-rating">
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                    </div>
+                                    <span>(5)</span>
+                                </div>
+                                <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                                <div class="product-price-2">
+                                    <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                    <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                                </div>
+                            </div>
+                            <div class="product-content-wrap-2 product-content-position text-center">
+                                <div class="product-rating-wrap">
+                                    <div class="product-rating">
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                        <i class="icon_star"></i>
+                                    </div>
+                                    <span>(5)</span>
+                                </div>
+                                <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                                <div class="product-price-2">
+                                    <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                    <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                                </div>
+                                <div class="pro-add-to-cart">
+                                    <button title="Add to Cart">Add To Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div><div class="product-plr-1">
+                    <div class="single-product-wrap">
+                        <div class="product-img product-img-zoom mb-15">
+                            <a>
+                                <img th:src="@{${thisItem.getIpic()}}" width="270" height="324" alt="">
+                            </a>
+                            <span class="pro-badge left bg-red">-$20.0</span>
+                        </div>
+                        <div class="product-content-wrap-2 text-center">
+                            <div class="product-rating-wrap">
+                                <div class="product-rating">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                </div>
+                                <span>(5)</span>
+                            </div>
+                            <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                            <div class="product-price-2">
+                                <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                            </div>
+                        </div>
+                        <div class="product-content-wrap-2 product-content-position text-center">
+                            <div class="product-rating-wrap">
+                                <div class="product-rating">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                </div>
+                                <span>(5)</span>
+                            </div>
+                            <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                            <div class="product-price-2">
+                                <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                            </div>
+                            <div class="pro-add-to-cart">
+                                <button title="Add to Cart">Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="product-plr-1">
+                    <div class="single-product-wrap">
+                        <div class="product-img product-img-zoom mb-15">
+                            <a>
+                                <img th:src="@{${thisItem.getIpic()}}" width="270" height="324" alt="">
+                            </a>
+                            <span class="pro-badge left bg-red">-$20.0</span>
+                        </div>
+                        <div class="product-content-wrap-2 text-center">
+                            <div class="product-rating-wrap">
+                                <div class="product-rating">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                </div>
+                                <span>(5)</span>
+                            </div>
+                            <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                            <div class="product-price-2">
+                                <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                            </div>
+                        </div>
+                        <div class="product-content-wrap-2 product-content-position text-center">
+                            <div class="product-rating-wrap">
+                                <div class="product-rating">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                </div>
+                                <span>(5)</span>
+                            </div>
+                            <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                            <div class="product-price-2">
+                                <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                            </div>
+                            <div class="pro-add-to-cart">
+                                <button title="Add to Cart">Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="product-plr-1">
+                    <div class="single-product-wrap">
+                        <div class="product-img product-img-zoom mb-15">
+                            <a>
+                                <img th:src="@{${thisItem.getIpic()}}" width="270" height="324" alt="">
+                            </a>
+                            <span class="pro-badge left bg-red">-$20.0</span>
+                        </div>
+                        <div class="product-content-wrap-2 text-center">
+                            <div class="product-rating-wrap">
+                                <div class="product-rating">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                </div>
+                                <span>(5)</span>
+                            </div>
+                            <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                            <div class="product-price-2">
+                                <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                            </div>
+                        </div>
+                        <div class="product-content-wrap-2 product-content-position text-center">
+                            <div class="product-rating-wrap">
+                                <div class="product-rating">
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                    <i class="icon_star"></i>
+                                </div>
+                                <span>(5)</span>
+                            </div>
+                            <h3><a th:text="${thisItem.getIname()}"></a></h3>
+                            <div class="product-price-2">
+                                <span class="new-price"><a th:text="'$' + ${thisItem.getPrice()}"></a></span>
+                                <span class="old-price"><a th:text="'$' + ${thisItem.getPrice()+20}"></a></span>
+                            </div>
+                            <div class="pro-add-to-cart">
+                                <button title="Add to Cart">Add To Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{commons/commons::footer}"></div>
+    </div>
+
+    <!-- All JS is here
+============================================ -->
+
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/plugins/slick.js"></script>
+    <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="assets/js/plugins/jquery.instagramfeed.min.js"></script>
+    <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/plugins/jquery-ui-touch-punch.js"></script>
+    <script src="assets/js/plugins/jquery-ui.js"></script>
+    <script src="assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/plugins/sticky-sidebar.js"></script>
+    <script src="assets/js/plugins/easyzoom.js"></script>
+    <script src="assets/js/plugins/scrollup.js"></script>
+    <script src="assets/js/plugins/ajax-mail.js"></script>
+
+    <!-- Use the minified version files listed below for better performance and remove the files listed above  
+<script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script>  -->
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

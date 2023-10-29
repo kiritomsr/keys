@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msr.keys.mapper.ExpressMapper">
+
+    <select id="queryExpress" resultType="com.msr.keys.pojo.Express">
+        select * from express where username=#{username}
+    </select>
+
+    <insert id="addExpress" parameterType="com.msr.keys.pojo.Express">
+        insert into express values (#{idExpress}, #{username},
+                                   #{country}, #{city}, #{address},
+                                   #{firstname}, #{lastname}, #{phone})
+    </insert>
+
+    <update id="editExpress" parameterType="com.msr.keys.pojo.Express">
+        update express set  country=#{country}, city=#{city}, address=#{address},
+                            firstname=#{firstname}, lastname=#{lastname}, phone=#{phone}
+                            where idexpress=#{idExpress} and username=#{username}
+    </update>
+
+    <delete id="deleteExpress" parameterType="com.msr.keys.pojo.Express">
+        DELETE FROM Express WHERE idexpress=#{idExpress} and username=#{username}
+    </delete>
+
+
+
+</mapper>

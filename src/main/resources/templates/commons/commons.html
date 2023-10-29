@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--	navbar-->
+<div class="container-fluid" th:fragment="navbar">
+    <div class="row-fluid">
+        <div class="span9">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="/" class="brand">KEYS</a>
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/">Home</a>
+
+                                </li>
+                                <li>
+                                    <a href="/itemLoad">Items</a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav pull-right">
+
+                                <li class="divider-vertical">
+                                </li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Account<strong class="caret"></strong></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/bag/show">Bags</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Orders</a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li>
+                                            <a href="/center/show">Center</a>
+                                        </li>
+                                        <li>
+                                            <a href="/sign" th:text="${session.loginUser}==null?'sign in':'sign out'"></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span3">
+        </div>
+    </div>
+</div>
+
+<!--header L-->
+<header class="header-area transparent-bar section-padding-1" th:fragment="navbar2">
+    <div class="container-fluid">
+        <div class="header-large-device">
+            <div class="header-bottom border-bottom-1">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo">
+                            <a href="/"><img src="assets/images/logo/KEYBOARD2.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="main-menu main-menu-padding-1 main-menu-lh-1">
+                            <nav>
+                                <ul>
+                                    <li><a href="/">HOME </a></li>
+                                    <li><a href="/itemLoad">SHOP </a></li>
+                                    <li><a>BLOG </a></li>
+                                    <li><a>CONTACT </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-4">
+                        <div class="header-action header-action-flex header-action-mrg-right">
+                            <div class="same-style-2 header-search-1">
+                                <a class="search-toggle" href="#">
+                                    <i class="icon-magnifier s-open"></i>
+                                    <i class="icon_close s-close"></i>
+                                </a>
+                                <div class="search-wrap-1">
+                                    <form action="/itemsearch">
+                                        <input placeholder="Search products…" type="text" name="search">
+                                        <button class="button-search"><i class="icon-magnifier"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="same-style-2 ">
+                                <a  href="/bagshow"><i class="icon-basket-loaded"></i></a>
+                            </div>
+
+                            <div class="same-style-2">
+                                <a href="/centershow"><i class="icon-user"></i></a>
+                            </div>
+
+                            <div class="same-style-2 ">
+                                <a href="/sign"><i class="icon-login"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<footer class="footer-area bg-gray pt-75 pb-75" th:fragment="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="contact-info-wrap">
+                    <div class="footer-logo">
+                        <a href="#"><img src="assets/images/logo/KEYBOARD2.png" alt="logo" width="150"></a>
+                    </div>
+                    <div class="single-contact-info">
+                        <span>Our Location</span>
+                        <p>BUPT Campus, Nanfeng Road No.1, Changping District, Beijing, CHN</p>
+                    </div>
+                    <div class="single-contact-info">
+                        <span>24/7 hotline:</span>
+                        <p>(+86) 188 1304 1208</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="footer-right-wrap">
+                    <div class="footer-menu">
+                        <nav>
+                            <ul>
+                                <li><a href="/">HOME </a></li>
+                                <li><a href="/itemLoad">SHOP </a></li>
+                                <li><a href="">BLOG </a></li>
+                                <li><a href="">CONTACT </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="social-style-2 social-style-2-mrg">
+                        <a href="#"><i class="social_twitter"></i></a>
+                        <a href="#"><i class="social_facebook"></i></a>
+                        <a href="#"><i class="social_googleplus"></i></a>
+                        <a href="#"><i class="social_instagram"></i></a>
+                        <a href="#"><i class="social_youtube"></i></a>
+                    </div>
+                    <div class="copyright">
+                        <p>Copyright © 2020 | Built with <span>Keys</span> by Team 22.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+
+</html>

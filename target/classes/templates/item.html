@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+		<title>Keyboard - Item Page</title>
+
+		<!-- Bootstrap -->
+		<link href="https://www.bootcss.com/p/layoutit/css/bootstrap-combined.min.css" rel="stylesheet">
+		<link href="https://www.bootcss.com/p/layoutit/css/layoutit.css" rel="stylesheet">
+		<script type="text/javascript" src="https://www.bootcss.com/p/layoutit/js/jquery-2.0.0.min.js"></script>
+		<script type="text/javascript" src="https://www.bootcss.com/p/layoutit/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+
+	<!--	navbar-->
+	<div th:replace="~{commons/commons::navbar}"></div>
+
+		<div class="container-fluid">
+
+			<div class="row-fluid">
+				<div class="span2">
+					<div class="accordion" id="accordion-49416">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-49416" href="#accordion-element-48271">Main</a>
+							</div>
+							<div id="accordion-element-48271" class="accordion-body collapse in">
+								<div class="accordion-inner">
+									<a href="/itemLoad">
+										All
+									</a>
+								</div>
+								<div class="accordion-inner">
+									<a href="/item/select?type=Keyboard">
+										Keyboard
+									</a>
+								</div>
+								<div class="accordion-inner">
+									<a href="/item/select?type=Workstation">
+										Workstation
+									</a>
+								</div>
+								<div class="accordion-inner">
+									<a href="/item/select?type=Digital Piano">
+										Digital Piano
+									</a>
+								</div>
+							</div>
+
+						</div>
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-49416" href="#accordion-element-496484">Others</a>
+							</div>
+							<div id="accordion-element-496484" class="accordion-body collapse">
+								<div class="accordion-inner">
+									Components
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="span8">
+					<ul class="thumbnails">
+						<li class="span5" th:each="item:${itemList}">
+							<div class="thumbnail">
+								<img class="mb-4" th:src="@{${item.getIpic()}}" alt="" width="300" height="100"/>
+								<div class="caption">
+									<a th:text="${item.getIname()}" th:href="@{/itemDetail(iname=${item.iname})}"></a>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="span2">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msr.keys.mapper.NcovUserMapper">
+
+    <select id="queryNcovUserList" resultType="com.msr.keys.pojo.NcovUser">
+        select * from ncov
+    </select>
+
+    <select id="queryByNcovUsername" resultType="com.msr.keys.pojo.NcovUser">
+        select * from ncov where id=#{id}
+    </select>
+
+    <insert id="addNcovUser" parameterType="com.msr.keys.pojo.NcovUser">
+        insert into ncov values (#{id},#{pwd},#{state})
+    </insert>
+
+    <update id="updateNcovUser" parameterType="com.msr.keys.pojo.NcovUser">
+        update ncov set pwd=#{pwd},state=#{state} where id=#{id}
+    </update>
+
+
+</mapper>

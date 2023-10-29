@@ -1,0 +1,166 @@
+<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Keyboard - Cart Page</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/images/KEYBOARD3.png">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <link rel="stylesheet" href="assets/css/vendor/vendor.min.css">
+    <link rel="stylesheet" href="assets/css/plugins/plugins.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+
+</head>
+
+<body>
+
+    <div class="main-wrapper">
+        <div th:replace="~{commons/commons::navbar2}"></div>
+        <div class="cart-main-area pt-115 pb-120">
+            <div class="container">
+                <br/>
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                        <form action="#">
+                            <div class="table-content table-responsive cart-table-content">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Image</th>
+                                            <th>Product Name</th>
+                                            <th>Until Price</th>
+                                            <th>Qty</th>
+                                            <th>Subtotal</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="bag:${bagList}">
+                                            <td><input type="checkbox" style="zoom:40%;" th:id="${bag.getIname()}" th:onclick="changeCheck([[${bag.getIname()}]],[[${bag.getNum()}]],[[${bag.getPrice()}]]);"></td>
+                                            <td class="product-thumbnail"><a th:href="@{/itemDetail(iname=${bag.iname})}"><img th:id="'img' + ${bag.getIname()}" src="assets/images/cart/cart-2.jpg" width="98" height="112" alt=""></a></td>
+                                            <td ><a th:href="@{/itemDetail(iname=${bag.iname})}" th:text="${bag.getIname()}">Simple Black T-Shirt</a></td>
+                                            <td ><span class="amount" th:text="'$' + ${bag.getPrice()}"></span></td>
+                                            <td >
+                                                <a class="btn" th:href="@{/bagreduce(iname=${bag.iname})}">-</a>
+                                                <a th:text="${bag.getNum()}"></a>
+                                                <a class="btn" th:href="@{/bagadd(iname=${bag.iname})}">+</a>
+                                            </td>
+                                            <td ><span class="amount" th:text="'$' + ${bag.getNum() * bag.getPrice()}"></span></td>
+                                            <td >
+                                                <a th:href="@{/bagdelete(iname=${bag.iname})}"><i class="icon_close"></i></a>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="cart-shiping-update-wrapper">
+                                        <div class="cart-shiping-update">
+                                            <a href="/itemLoad">Continue Shopping</a>
+                                        </div>
+                                        <div class="cart-clear">
+                                            <a id="countTag">Total: ${{countTotal}}</a>
+                                            <a onclick="checkOut()">Check out</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{commons/commons::footer}"></div>
+    </div>
+
+    <!-- All JS is here
+============================================ -->
+
+    <script type="text/javascript" th:inline="javascript">
+
+        var vm = new Vue(
+            {
+                el:"#countTag",
+                data:{
+                    countTotal: 0
+                }
+            }
+        );
+
+        var checkList = new Array();
+
+        $(function () {
+            var itemList = eval([[${JSONitemList}]]);
+            var bagList = eval([[${JSONbagList}]]);
+
+            for(bag in bagList){
+                for (item in itemList){
+                    if(bagList[bag]['iname']==itemList[item]['iname']){
+                        var tagId = 'img' + bagList[bag]['iname'];
+                        $(document.getElementById(tagId)).attr('src',itemList[item]['ipic']);
+                    }
+                }
+            }
+        });
+
+        function changeCheck(bagName,bagNum,bagPrice) {
+
+            if ($(document.getElementById(bagName)).is(":checked")== true) {
+                //选中触发事件
+                vm.countTotal = vm.countTotal + bagNum * bagPrice;
+                checkList.push(bagName);
+
+            } else {
+                //取消选中触发事件
+                vm.countTotal = vm.countTotal - bagNum * bagPrice;
+                checkList.splice(checkList.indexOf(bagName),1);
+
+            };
+        };
+
+        function checkOut() {
+            var sendList = checkList.toString();
+            if(sendList=='') return;
+            window.location.href="/ordersubmit?sendList=" + sendList + "&sum=" + vm.countTotal;
+        }
+
+    </script>
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="assets/js/vendor/jquery-3.5.1.min.js"></script>
+    <script src="assets/js/vendor/jquery-migrate-3.3.0.min.js"></script>
+    <script src="assets/js/vendor/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/plugins/slick.js"></script>
+    <script src="assets/js/plugins/jquery.syotimer.min.js"></script>
+    <script src="assets/js/plugins/jquery.instagramfeed.min.js"></script>
+    <script src="assets/js/plugins/jquery.nice-select.min.js"></script>
+    <script src="assets/js/plugins/wow.js"></script>
+    <script src="assets/js/plugins/jquery-ui-touch-punch.js"></script>
+    <script src="assets/js/plugins/jquery-ui.js"></script>
+    <script src="assets/js/plugins/magnific-popup.js"></script>
+    <script src="assets/js/plugins/sticky-sidebar.js"></script>
+    <script src="assets/js/plugins/easyzoom.js"></script>
+    <script src="assets/js/plugins/scrollup.js"></script>
+    <script src="assets/js/plugins/ajax-mail.js"></script>
+
+    <!-- Use the minified version files listed below for better performance and remove the files listed above  
+<script src="assets/js/vendor/vendor.min.js"></script>
+<script src="assets/js/plugins/plugins.min.js"></script>  -->
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

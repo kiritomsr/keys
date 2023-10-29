@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<!--	navbar-->
+<div class="container-fluid" th:fragment="navbar">
+    <div class="row-fluid">
+        <div class="span9">
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container-fluid">
+                        <a data-target=".navbar-responsive-collapse" data-toggle="collapse" class="btn btn-navbar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></a> <a href="/" class="brand">KEYS</a>
+                        <div class="nav-collapse collapse navbar-responsive-collapse">
+                            <ul class="nav">
+                                <li>
+                                    <a href="/">Home</a>
+
+                                </li>
+                                <li>
+                                    <a href="/itemLoad">Items</a>
+                                </li>
+                            </ul>
+
+                            <ul class="nav pull-right">
+
+                                <li class="divider-vertical">
+                                </li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">My Account<strong class="caret"></strong></a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="/bag/show">Bags</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Orders</a>
+                                        </li>
+                                        <li class="divider">
+                                        </li>
+                                        <li>
+                                            <a href="/center/show">Center</a>
+                                        </li>
+                                        <li>
+                                            <a href="/sign" th:text="${session.loginUser}==null?'sign in':'sign out'"></a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span3">
+        </div>
+    </div>
+</div>
+
+<!--header L-->
+<header class="header-area transparent-bar section-padding-1" th:fragment="navbar2">
+    <div class="container-fluid">
+        <div class="header-large-device">
+            <div class="header-bottom border-bottom-1">
+                <div class="row align-items-center">
+                    <div class="col-xl-2 col-lg-2">
+                        <div class="logo">
+                            <a href="index.html"><img src="assets/images/logo/KEYBOARD2.png" alt="logo"></a>
+                        </div>
+                    </div>
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="main-menu main-menu-padding-1 main-menu-lh-1">
+                            <nav>
+                                <ul>
+                                    <li><a href="index.html">HOME??? </a></li>
+                                    <li><a href="shop.html">SHOP </a></li>
+                                    <li><a href="#">PAGES </a></li>
+                                    <li><a href="blog.html">BLOG </a></li>
+                                    <li><a href="contact.html">CONTACT </a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-xl-2 col-lg-3">
+                        <div class="header-action header-action-flex header-action-mrg-right">
+                            <div class="same-style-2 header-search-1">
+                                <a class="search-toggle" href="#">
+                                    <i class="icon-magnifier s-open"></i>
+                                    <i class="icon_close s-close"></i>
+                                </a>
+                                <div class="search-wrap-1">
+                                    <form action="#">
+                                        <input placeholder="Search products…" type="text">
+                                        <button class="button-search"><i class="icon-magnifier"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="same-style-2">
+                                <a href="login-register.html"><i class="icon-user"></i></a>
+                            </div>
+                            <div class="same-style-2">
+                                <a href="cart.html"><i class="icon-basket-loaded"></i></a>
+                            </div>
+                            <div class="same-style-2">
+                                <a href=""><i class="icon-exit"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- mini cart start -->
+<div class="sidebar-cart-active" th:fragment="cartbar">
+    <div class="sidebar-cart-all">
+        <a class="cart-close" href="#"><i class="icon_close"></i></a>
+        <div class="cart-content">
+            <h3>Shopping Cart</h3>
+            <ul>
+                <li class="single-product-cart">
+                    <div class="cart-img">
+                        <a href="#"><img src="assets/images/cart/cart-1.jpg" alt=""></a>
+                    </div>
+                    <div class="cart-title">
+                        <h4><a href="#">Simple Black T-Shirt</a></h4>
+                        <span> 1 × $49.00	</span>
+                    </div>
+                    <div class="cart-delete">
+                        <a href="#">×</a>
+                    </div>
+                </li>
+                <li class="single-product-cart">
+                    <div class="cart-img">
+                        <a href="#"><img src="assets/images/cart/cart-2.jpg" alt=""></a>
+                    </div>
+                    <div class="cart-title">
+                        <h4><a href="#">Norda Backpack</a></h4>
+                        <span> 1 × $49.00	</span>
+                    </div>
+                    <div class="cart-delete">
+                        <a href="#">×</a>
+                    </div>
+                </li>
+            </ul>
+            <div class="cart-total">
+                <h4>Subtotal: <span>$170.00</span></h4>
+            </div>
+            <div class="cart-checkout-btn">
+                <a class="btn-hover cart-btn-style" href="cart.html">view cart</a>
+                <a class="no-mrg btn-hover cart-btn-style" href="checkout.html">checkout</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</html>

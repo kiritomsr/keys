@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msr.keys.mapper.BagMapper">
+
+    <select id="queryBag" resultType="com.msr.keys.pojo.Bag">
+        select * from bag where username=#{username}
+    </select>
+
+    <select id="queryOrderBag" resultType="com.msr.keys.pojo.Bag">
+        select * from bag where username=#{username} and iname=#{iname}
+    </select>
+
+    <insert id="addBag" parameterType="com.msr.keys.pojo.Bag">
+        insert into bag values (#{username},#{iname},#{num},#{price})
+    </insert>
+
+    <update id="editBag" parameterType="com.msr.keys.pojo.Bag">
+        update bag set num=#{num} where username=#{username} and iname=#{iname}
+    </update>
+
+    <delete id="deleteBag" parameterType="com.msr.keys.pojo.Bag">
+        DELETE FROM bag WHERE username=#{username} and iname =#{iname}
+    </delete>
+
+
+
+</mapper>

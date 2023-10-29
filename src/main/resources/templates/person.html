@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<title>Edit Personal</title>
+		<!-- Bootstrap core CSS -->
+		<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+		<!-- Custom styles for this template -->
+		<link th:href="@{/css/signin.css}" rel="stylesheet">
+	</head>
+
+	<body class="text-center">
+		<form class="form-signin" th:action="@{/personal}">
+			<img class="mb-4" th:src="@{/img/bootstrap-solid.svg}" alt="" width="72" height="72">
+			<h1 class="h3 mb-3 font-weight-normal">Please type change</h1>
+
+			<p style="color: red" th:text="${msg}" th:if="${!#strings.isEmpty(msg)}"> </p>
+
+			<label class="sr-only">Password</label>
+			<input type="text" name="password" class="form-control" placeholder="password" autofocus="" required="">
+			<label class="sr-only">Email</label>
+			<input type="text" name="email" class="form-control" placeholder="email" required="">
+			<div class="checkbox mb-3">
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Apply</button>
+			<p class="mt-5 mb-3 text-muted">© 2017-2018</p>
+
+		</form>
+
+	</body>
+
+</html>
